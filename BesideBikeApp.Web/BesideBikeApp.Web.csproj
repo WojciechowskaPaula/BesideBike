@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BesideBike.Application\BesideBike.Application.csproj" />
+    <ProjectReference Include="..\BesideBike.Infrastructure\BesideBike.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

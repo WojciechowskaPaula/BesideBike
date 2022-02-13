@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BesideBikeApp.Web", "BesideBikeApp.Web\BesideBikeApp.Web.csproj", "{D5443047-D324-405E-BD3B-020545D46744}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BesideBikeApp.Web", "BesideBikeApp.Web\BesideBikeApp.Web.csproj", "{D5443047-D324-405E-BD3B-020545D46744}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{4E0622EA-B908-4EF0-B57E-22F6FA67D04A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{1F1F6A13-0FF7-492F-8698-67501A335E83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6B15F488-EF94-4FDB-AF3F-BB9AA9124A83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{D6C316B1-B2DA-488E-8966-706B7E49A3FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BesideBike.Application", "BesideBike.Application\BesideBike.Application.csproj", "{A7A4C757-B024-4F2E-8D34-8808E41F7F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BesideBike.Domain", "BesideBike.Domain\BesideBike.Domain.csproj", "{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BesideBike.Infrastructure", "BesideBike.Infrastructure\BesideBike.Infrastructure.csproj", "{A186AD2B-930E-4F66-B4B1-AD8084DA5A06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +29,27 @@ Global
 		{D5443047-D324-405E-BD3B-020545D46744}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5443047-D324-405E-BD3B-020545D46744}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5443047-D324-405E-BD3B-020545D46744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A4C757-B024-4F2E-8D34-8808E41F7F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A4C757-B024-4F2E-8D34-8808E41F7F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A4C757-B024-4F2E-8D34-8808E41F7F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A4C757-B024-4F2E-8D34-8808E41F7F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A186AD2B-930E-4F66-B4B1-AD8084DA5A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A186AD2B-930E-4F66-B4B1-AD8084DA5A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A186AD2B-930E-4F66-B4B1-AD8084DA5A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A186AD2B-930E-4F66-B4B1-AD8084DA5A06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D5443047-D324-405E-BD3B-020545D46744} = {D6C316B1-B2DA-488E-8966-706B7E49A3FC}
+		{A7A4C757-B024-4F2E-8D34-8808E41F7F67} = {4E0622EA-B908-4EF0-B57E-22F6FA67D04A}
+		{D4E3BF39-9EF4-4D6B-92A4-A202EDAB16B9} = {1F1F6A13-0FF7-492F-8698-67501A335E83}
+		{A186AD2B-930E-4F66-B4B1-AD8084DA5A06} = {6B15F488-EF94-4FDB-AF3F-BB9AA9124A83}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {682A64EB-FF6F-4661-B023-63169F2433E6}
