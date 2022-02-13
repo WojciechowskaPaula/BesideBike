@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BesideBike.Domain.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,22 @@ namespace BesideBike.Infrastructure
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+        }
+        public DbSet<Bike> Bikes { get; set; }
+        public DbSet<BikeType> BikeTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Bike>()
+               .HasOne<BikeType>(x => x.BikeType)
+               .WithOne(x => x.Bike)
+               .HasForeignKey<BikeType>(x => x.BikeId);
+            builder.Entity<Order>()
+                .HasOne<Bike>(x => x.Bike)
+                .WithOne(x => x.Order)
+                .HasForeignKey<Bike>(x => x.Id);
         }
     }
 }
