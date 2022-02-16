@@ -10,8 +10,8 @@ namespace BesideBike.Domain.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
         public int PricePerHour { get; set; }
+        public int BikeTypeId { get; set; }
         public BikeType BikeType { get; set; }
         public Order Order { get; set; }
     }

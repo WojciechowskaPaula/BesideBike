@@ -21,14 +21,15 @@ namespace BesideBike.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+          
             builder.Entity<Bike>()
-               .HasOne<BikeType>(x => x.BikeType)
+                .HasOne<BikeType>(x => x.BikeType)
                .WithOne(x => x.Bike)
-               .HasForeignKey<BikeType>(x => x.BikeId);
+               .HasForeignKey<Bike>(x => x.BikeTypeId);
             builder.Entity<Order>()
                 .HasOne<Bike>(x => x.Bike)
                 .WithOne(x => x.Order)
-                .HasForeignKey<Bike>(x => x.Id);
+                .HasForeignKey<Order>(x => x.Id);
         }
     }
 }
