@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BesideBike.Infrastructure.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class ChangeBikeTypeModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -192,15 +192,16 @@ namespace BesideBike.Infrastructure.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BikeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Bikes_Id",
-                        column: x => x.Id,
+                        name: "FK_Orders_Bikes_BikeId",
+                        column: x => x.BikeId,
                         principalTable: "Bikes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -248,8 +249,12 @@ namespace BesideBike.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Bikes_BikeTypeId",
                 table: "Bikes",
-                column: "BikeTypeId",
-                unique: true);
+                column: "BikeTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_BikeId",
+                table: "Orders",
+                column: "BikeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

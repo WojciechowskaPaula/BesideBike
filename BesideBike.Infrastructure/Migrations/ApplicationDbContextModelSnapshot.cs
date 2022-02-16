@@ -42,8 +42,7 @@ namespace BesideBike.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BikeTypeId")
-                        .IsUnique();
+                    b.HasIndex("BikeTypeId");
 
                     b.ToTable("Bikes");
                 });
@@ -68,12 +67,17 @@ namespace BesideBike.Infrastructure.Migrations
             modelBuilder.Entity("BesideBike.Domain.Model.Order", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("BikeId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BikeId");
 
                     b.ToTable("Orders");
                 });
@@ -283,8 +287,8 @@ namespace BesideBike.Infrastructure.Migrations
             modelBuilder.Entity("BesideBike.Domain.Model.Bike", b =>
                 {
                     b.HasOne("BesideBike.Domain.Model.BikeType", "BikeType")
-                        .WithOne("Bike")
-                        .HasForeignKey("BesideBike.Domain.Model.Bike", "BikeTypeId")
+                        .WithMany("Bikes")
+                        .HasForeignKey("BikeTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -294,8 +298,8 @@ namespace BesideBike.Infrastructure.Migrations
             modelBuilder.Entity("BesideBike.Domain.Model.Order", b =>
                 {
                     b.HasOne("BesideBike.Domain.Model.Bike", "Bike")
-                        .WithOne("Order")
-                        .HasForeignKey("BesideBike.Domain.Model.Order", "Id")
+                        .WithMany("Orders")
+                        .HasForeignKey("BikeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -355,14 +359,12 @@ namespace BesideBike.Infrastructure.Migrations
 
             modelBuilder.Entity("BesideBike.Domain.Model.Bike", b =>
                 {
-                    b.Navigation("Order")
-                        .IsRequired();
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("BesideBike.Domain.Model.BikeType", b =>
                 {
-                    b.Navigation("Bike")
-                        .IsRequired();
+                    b.Navigation("Bikes");
                 });
 #pragma warning restore 612, 618
         }

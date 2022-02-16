@@ -23,13 +23,14 @@ namespace BesideBike.Infrastructure
             base.OnModelCreating(builder);
           
             builder.Entity<Bike>()
-                .HasOne<BikeType>(x => x.BikeType)
-               .WithOne(x => x.Bike)
-               .HasForeignKey<Bike>(x => x.BikeTypeId);
+               .HasOne<BikeType>(x => x.BikeType)
+               .WithMany(x => x.Bikes)
+               .HasForeignKey(x => x.BikeTypeId);
+
             builder.Entity<Order>()
                 .HasOne<Bike>(x => x.Bike)
-                .WithOne(x => x.Order)
-                .HasForeignKey<Order>(x => x.Id);
+                .WithMany(x => x.Orders)
+                .HasForeignKey(x => x.BikeId);
         }
     }
 }

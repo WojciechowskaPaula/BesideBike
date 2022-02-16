@@ -10,6 +10,6 @@ namespace BesideBike.Domain.Model
     {
         public int BikeTypeId { get; set; }
         public string Name { get; set; }
-        public Bike Bike { get; set; }
+        public ICollection<Bike> Bikes { get; set; }
     }
 }
