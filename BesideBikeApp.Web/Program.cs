@@ -3,18 +3,25 @@ using Microsoft.EntityFrameworkCore;
 using BesideBike.Infrastructure;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BesideBikeApp.Web.Services;
+using BesideBike.Application.Services;
+using BesideBike.Application.Interfaces;
+using BesideBike.Domain.Interface;
+using BesideBike.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));builder.Services.AddDbContext<BesideBike.Infrastructure.ApplicationDbContext>(options =>
+
+builder.Services.AddDbContext<BesideBike.Infrastructure.ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<BesideBike.Infrastructure.ApplicationDbContext>();
+builder.Services.AddTransient<IBikeService, BikeService>();
+builder.Services.AddTransient<IBikeRepository, BikeRepository>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 builder.Services.AddControllersWithViews();
