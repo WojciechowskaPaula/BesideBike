@@ -10,5 +10,7 @@ namespace BesideBike.Domain.Interface
     public interface IBikeRepository
     {
         IEnumerable<Bike> GetAllBikes();
+        Bike GetBikeById(int id);
+        void UpdateBike(Bike bike);
     }
 }

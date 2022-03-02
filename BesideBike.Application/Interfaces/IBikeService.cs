@@ -11,5 +11,7 @@ namespace BesideBike.Application.Interfaces
     public interface IBikeService
     {
         IEnumerable<BikesVM> GetAllBikes();
+        BikesVM GetBikeForEdit(int id);
+        public Bike Update(BikesVM bikeVm);
     }
 }

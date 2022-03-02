@@ -21,5 +21,19 @@ namespace BesideBike.Infrastructure.Repositories
         {
             return _dbContext.Bikes.ToList();
         }
+
+        public Bike GetBikeById(int id)
+        {
+            return  _dbContext.Bikes.FirstOrDefault(b => b.Id == id);
+           
+        }
+        public void UpdateBike(Bike bike)
+        {
+            _dbContext.Bikes.Attach(bike);
+            _dbContext.Entry(bike).Property("Name").IsModified = true;
+            _dbContext.Entry(bike).Property("PricePerHour").IsModified = true;
+            _dbContext.Entry(bike).Property("BikeTypeId").IsModified=true;
+            _dbContext.SaveChanges();
+        }
     }
 }

@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BesideBike.Domain\BesideBike.Domain.csproj" />
+    <ProjectReference Include="..\BesideBike.Infrastructure\BesideBike.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

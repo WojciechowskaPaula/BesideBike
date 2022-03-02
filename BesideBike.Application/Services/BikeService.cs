@@ -36,5 +36,27 @@ namespace BesideBike.Application.Services
 
         }
 
+        public BikesVM GetBikeForEdit(int id)
+        {
+            var bike =_bikeRepository.GetBikeById(id);
+            var vm = new BikesVM();
+            vm.Id =bike.Id;
+            vm.Name=bike.Name;
+            vm.BikeTypeId=bike.BikeTypeId;
+            vm.PricePerHour=bike.PricePerHour;
+            return vm;
+        }
+
+        public Bike Update(BikesVM bikeVm)
+        {
+            var updatedBike = new Bike();
+            updatedBike.Id = bikeVm.Id;
+            updatedBike.Name = bikeVm.Name;
+            updatedBike.PricePerHour= bikeVm.PricePerHour;
+            updatedBike.BikeTypeId= bikeVm.BikeTypeId;
+            _bikeRepository.UpdateBike(updatedBike);
+            return updatedBike;
+        }
+
     }
 }
